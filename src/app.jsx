@@ -1,0 +1,129 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var ColorCalculator = require('./colorchartcalculator');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Link = require('react-router').Link
+var IndexRoute  = ReactRouter.IndexRoute
+var browserHistory = ReactRouter.browserHistory;
+var ReusableComponent = require('./reusablecomponent');
+var Navbar = require('./navbar');
+var Component1 = React.createClass({
+  render: function()
+  {
+    return(
+      <div>
+          <ReusableComponent absrv="R" unit="Ω" typeofcalc="series"/>
+      </div>
+    );
+  }
+});
+var Component2 = React.createClass({
+  render: function()
+  {
+    return(
+      <div>
+          <ReusableComponent absrv="R" unit="Ω" typeofcalc="parallel"/>
+      </div>
+    );
+  }
+});
+var Component3 = React.createClass({
+  render: function()
+  {
+    return(
+      <div>
+          <ReusableComponent absrv="C" unit="F" typeofcalc="parallel"/>
+      </div>
+    );
+  }
+});
+var Component4 = React.createClass({
+  render: function()
+  {
+    return(
+      <div>
+          <ReusableComponent absrv="C" unit="F" typeofcalc="series"/>
+      </div>
+    );
+  }
+});
+var Home = React.createClass({
+  render: function()
+  {
+    return(
+
+      <div className="row">
+        <div className="col-xs-6 col-md-4">
+          <Link to="/resistor" className="thumbnail">
+            <img className="h-370" src="data:image/jpeg;base64,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" alt="..."/>
+          </Link>
+          <span>Resistor Color Chart Calculator</span>
+
+        </div>
+        <div className="col-xs-6 col-md-4">
+          <Link to="/seriesresistor" className="thumbnail">
+          <img src="data:image/jpeg;base64,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" alt="..."/>
+          </Link>
+          <span>Resistor Series Calculator</span>
+
+        </div>
+        <div className="col-xs-6 col-md-4">
+          <Link to="/parallelresistor" className="thumbnail">
+          <img src="data:image/jpeg;base64,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" alt="..."/>
+          </Link>
+          <span>Resistor Parallel Calculator</span>
+        </div>
+        <div className="col-xs-6 col-md-4">
+          <Link to="/seriescapacitor" className="thumbnail">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/41s%2B0-V2rUL._AC_UL160_SR160,160_.jpg" alt="..."/>
+          </Link>
+          <span>Capacitor Series Calculator</span>
+        </div>
+        <div className="col-xs-6 col-md-4">
+          <Link to="/parallelcapacitor" className="thumbnail">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/41s%2B0-V2rUL._AC_UL160_SR160,160_.jpg" alt="..."/>
+          </Link>
+          <span>Capacitor Parallel Calculator</span>
+        </div>
+      </div>
+    );
+  }
+});
+var App = React.createClass({
+  render:function()
+  {
+    return (
+      <div>
+        <Navbar/>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-1"></div>
+            <div style={{"marginTop":"10px"}} className="col-xs-10">
+              {this.props.children}
+            </div>
+            <div className="col-xs-1"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+});
+//onEnter={requireAuth}
+var routes = (
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="/resistor" component={ColorCalculator} />
+      <Route path="/seriesresistor" component={Component1} />
+      <Route path="/parallelresistor" component={Component2} />
+      <Route path="/seriescapacitor" component={Component3} />
+      <Route path="/parallelcapacitor" component={Component4} />
+    </Route>
+  </Router>
+);
+
+var element = React.createElement(Navbar, {});
+ReactDOM.render(routes, document.getElementById('App'));
+// ReactDOM.render(element, document.getElementById('navbar'));
